@@ -9,4 +9,4 @@ require 'solver/secant'
 require 'solver/rfsecant'
 # TODO: Crenshaw/Secant method
 require 'solver/psolver'
-# require 'solver/tvmsolver'
+require 'solver/tvm'
