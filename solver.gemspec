@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{solver}
-  s.version = "0.0.0"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Javier Goizueta"]
@@ -29,12 +29,14 @@ Gem::Specification.new do |s|
      "lib/solver/psolver.rb",
      "lib/solver/rfsecant.rb",
      "lib/solver/secant.rb",
+     "lib/solver/tvm.rb",
      "solver.gemspec",
      "test/helper.rb",
      "test/test_function.rb",
      "test/test_psolver.rb",
      "test/test_rfsecant.rb",
-     "test/test_secant.rb"
+     "test/test_secant.rb",
+     "test/test_tvm.rb"
   ]
   s.homepage = %q{http://github.com/jgoizueta/solver}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -47,7 +49,8 @@ Gem::Specification.new do |s|
      "test/test_function.rb",
      "test/test_psolver.rb",
      "test/test_rfsecant.rb",
-     "test/test_secant.rb"
+     "test/test_secant.rb",
+     "test/test_tvm.rb"
   ]
 
   if s.respond_to? :specification_version then
