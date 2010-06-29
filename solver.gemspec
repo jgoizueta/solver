@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
      "lib/solver/psolver.rb",
      "lib/solver/rfsecant.rb",
      "lib/solver/secant.rb",
+     "solver.gemspec",
      "test/helper.rb",
      "test/test_function.rb",
      "test/test_psolver.rb",
