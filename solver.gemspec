@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{solver}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Javier Goizueta"]
@@ -45,7 +45,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{Numeric solver to exercise the Flt library}
   s.test_files = [
-    "test/helper.rb",
+    "test/chk.rb",
+     "test/helper.rb",
      "test/test_function.rb",
      "test/test_psolver.rb",
      "test/test_rfsecant.rb",
