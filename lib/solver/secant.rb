@@ -5,6 +5,7 @@ module Flt::Solver
   # 
   # Example of use:
   #   require 'solver'
+  #   require 'flt/tolerance'
   #   include Flt
   #   solver = Solver::SecantSolver.new(Float.context, [0.0, 100.0], Tolerance(3, :decimals)) do |x|
   #     2*x+11.0
