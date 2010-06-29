@@ -12,7 +12,7 @@ begin
     gem.authors = ["Javier Goizueta"]
     gem.add_development_dependency "shoulda"
     gem.add_dependency "flt", ">= 1.3.0"
-    gem.required_ruby_version = '>= 1.9.2'
+    gem.required_ruby_version = '> 1.9.1'
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
