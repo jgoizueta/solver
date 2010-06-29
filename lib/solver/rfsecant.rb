@@ -23,9 +23,14 @@ module Flt::Solver
 
     def initialize(context, default_guesses, tol, eqn=nil, &blk)
       super context, default_guesses, tol, eqn, &blk
+      @half = num(Rational(1,2))
+      reset
+    end
+    
+    def reset
+      super
       @a = @b = @fa = @fb = nil
       @bracketing = false
-      @half = num(Rational(1,2))
     end
 
     def step

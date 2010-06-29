@@ -13,18 +13,23 @@ class Base
     @x = @default_guesses.first
     @f = eqn || blk
     @tol = tol # user-requested tolerance
+    @max_it = 8192
+    reset
+  end
+
+  def reset
     @l_x = nil
     @fx = nil
     @l_fx = nil
     @ok = true
     @conv = false
-    @max_it = 8192
   end
 
   # value of parameters[var] is used as a guess in precedence to the pre-guesses if not nil
   # use Array for two guesses
   def root(*guesses)
     @guess = (guesses + @default_guesses).map{|g| num(g)}
+    reset
     @l_x = @x = @guess.first
     @l_fx = @fx = eval_f(@x)
     @ok = true
@@ -44,7 +49,6 @@ class Base
       @l_fx = @fx
       @x = next_x
       @fx = eval_f(@x)
-      # puts "X=#{@x.inspect}[#{@fx.inspect}]"
       @conv = test_conv() if @ok
       break if @conv
       @iteration += 1
