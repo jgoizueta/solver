@@ -16,7 +16,7 @@ module Flt::Solver
         :m0=>'initial money value',
         :pmt=>'payment per time unit',
         :i=>'percent interest per year',
-        :p=>'numer of time units per year'
+        :p=>'number of time units per year'
       }
       @vars = @var_descriptions.keys
       vars = @vars
