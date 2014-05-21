@@ -10,7 +10,8 @@ begin
     gem.email = "jgoizueta@gmail.com"
     gem.homepage = "http://github.com/jgoizueta/solver"
     gem.authors = ["Javier Goizueta"]
-    gem.add_development_dependency "shoulda"
+    gem.add_development_dependency "shoulda-context"
+    gem.add_development_dependency "minitest"
     gem.add_dependency "flt", ">= 1.3.0"
     gem.required_ruby_version = '> 1.9.1'
   end
@@ -43,7 +44,7 @@ task :test => :check_dependencies
 
 task :default => :test
 
-require 'rake/rdoctask'
+require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
