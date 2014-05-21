@@ -19,3 +19,10 @@ rdoc
 pkg
 
 ## PROJECT::SPECIFIC
+tmp
+*.bundle
+*.so
+*.o
+*.a
+mkmf.log
+Gemfile.lock

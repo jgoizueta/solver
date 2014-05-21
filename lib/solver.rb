@@ -1,8 +1,6 @@
 require 'flt/math'
 
-module Flt::Solver
-end
-
+require 'solver/version'
 require 'solver/function'
 require 'solver/base'
 require 'solver/secant'
