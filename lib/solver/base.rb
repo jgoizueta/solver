@@ -25,8 +25,6 @@ class Base
     @conv = false
   end
 
-  # value of parameters[var] is used as a guess in precedence to the pre-guesses if not nil
-  # use Array for two guesses
   def root(*guesses)
     @guess = (guesses + @default_guesses).map{|g| num(g)}
     reset
@@ -36,7 +34,7 @@ class Base
     @conv = false
 
     # Minimum tolerance of the numeric type used
-    @numeric_tol = Tolerance(1,:ulps) # Tolerance(@context.epsilon, :floating)
+    @numeric_tol = Flt::Tolerance(1,:ulps) # Tolerance(@context.epsilon, :floating)
 
     raise "Invalid parameters" unless validate
 
