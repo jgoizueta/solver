@@ -1,5 +1,0 @@
-= solver
-
-This numeric solver is an example of the use of Flt.
-
-Copyright (c) 2010 Javier Goizueta. See LICENSE for details.
