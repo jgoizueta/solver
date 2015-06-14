@@ -1,4 +1,5 @@
 require 'flt/math'
+require 'flt/tolerance'
 
 require 'solver/version'
 require 'solver/function'
