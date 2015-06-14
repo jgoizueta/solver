@@ -42,7 +42,7 @@ Let's define an equation to compute the *Time Value of Money* (i.e. compound int
 tvm_equation = ->(future_value, time, present_value, payment, interest, payments_per_year) {
   i = interest/100/payments_per_year
   n = -time
-  k = (i + 1)**n # not the right way to compute it!
+  k = (i + 1)**n
   present_value + payment*(1-k)/i + future_value*k
 }
 ```
