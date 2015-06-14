@@ -1,8 +1,8 @@
 module Flt::Solver
-  
+
   # Regula-Falsi/Secant method solver
   # Secant is used if no bracketing is available
-  # 
+  #
   # Example of use:
   #   require 'solver'
   #   include Flt
@@ -26,7 +26,7 @@ module Flt::Solver
       @half = num(Rational(1,2))
       reset
     end
-    
+
     def reset
       super
       @a = @b = @fa = @fb = nil
@@ -85,5 +85,5 @@ module Flt::Solver
     end
 
   end  # RFSecantSolver
-  
+
 end # Flt::Solver

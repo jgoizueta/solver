@@ -1,7 +1,7 @@
 module Flt::Solver
-  
+
   # Solver with equation parameters passed in a hash
-  # 
+  #
   # Example: a simple TVM (Time Value of Money) solver
   #
   #   # ln(x+1)
@@ -9,7 +9,7 @@ module Flt::Solver
   #     v = x + 1
   #     (v == 1) ? x : (x*ln(v) / (v - 1))
   #   end
-  # 
+  #
   #   tvm = Flt::Solver::PSolver.new(Float.context, Flt.Tolerance(3,:decimals)) do |m, t, m0, pmt, i, p|
   #     i /= 100
   #     i /= p
@@ -23,7 +23,7 @@ module Flt::Solver
   #   puts sol.inspect # => -55.45975978539105
   #
   class PSolver
-    
+
     def initialize(context, tol, solver_class=nil, &blk)
 
       @solver_class = solver_class || RFSecantSolver

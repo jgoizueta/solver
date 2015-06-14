@@ -1,11 +1,11 @@
 module Flt::Solver
 
   # A Time-Value-of-Money solver
-  # 
+  #
   # Example:
   #   tvm = TVM.new(Tolerance(3, :decimals), Float.context)
   #   puts tvm.solve(:t=>240, :m0=>10000, :m=>0, :i=>3, :p=>12).inspect # => {:pmt=>-55.45975978539105}
-  #   
+  #
   class TVM
 
     def initialize(tol, context=Float.context)
