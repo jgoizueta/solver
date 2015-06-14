@@ -1,11 +1,10 @@
 module Flt::Solver
-  
+
   # Secant method solver
   # Bisect method is used is bracketing found (sign(f(a)) != sign(f(b)))
-  # 
+  #
   # Example of use:
   #   require 'solver'
-  #   require 'flt/tolerance'
   #   include Flt
   #   solver = Solver::SecantSolver.new(Float.context, [0.0, 100.0], Tolerance(3, :decimals)) do |x|
   #     2*x+11.0
@@ -27,7 +26,7 @@ module Flt::Solver
       @half = num(Rational(1,2))
       reset
     end
-    
+
     def reset
       super
       @a = @b = @fa = @fb = nil
@@ -85,5 +84,5 @@ module Flt::Solver
     end
 
   end # SecantSolver
-  
+
 end # Flt::Solver
