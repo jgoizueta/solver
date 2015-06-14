@@ -21,8 +21,8 @@ module Flt::Solver
   #
   class RFSecantSolver < Base
 
-    def initialize(context, default_guesses, tol, eqn=nil, &blk)
-      super context, default_guesses, tol, eqn, &blk
+    def initialize(*args, &blk)
+      super
       @half = num(Rational(1,2))
       reset
     end

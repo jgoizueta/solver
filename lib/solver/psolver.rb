@@ -24,19 +24,19 @@ module Flt::Solver
   #
   class PSolver
 
-    def initialize(context, tol, solver_class=nil, &blk)
+    def initialize(*args, &blk)
+      options = Base.extract_options(*args, &blk)
 
-      @solver_class = solver_class || RFSecantSolver
-      @eqn = blk
+      @solver_class = options[:solver_class] || RFSecantSolver
+      @eqn = options[:equation]
       @vars = Function.parameters(@eqn)
       # alternatively, we could keep @eqn = Function[@eqn] and dispense with @vars
 
-      @default_guesses = nil
+      @default_guesses = options[:default_guesses]
 
-      @context = context
-      @tol = tol
+      @context = options[:context]
+      @tol = options[:tolerance]
       @solver = nil
-
     end
 
     def default_guesses=(*g)
@@ -62,7 +62,11 @@ module Flt::Solver
     private
     def init_solver
       this = self
-      @solver ||= @solver_class.new(@context, @default_guesses, @tol){|v| this.equation_value(v)}
+      @solver ||= @solver_class.new(
+                    context: @context,
+                    default_guesses: @default_guesses,
+                    tolerance: @tol
+                  ) { |v| this.equation_value(v) }
     end
 
   end

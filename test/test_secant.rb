@@ -32,6 +32,32 @@ class TestSecant < MiniTest::Unit::TestCase
         assert_in_delta 1.6094389956808506, solver.root(1.0), @delta
         assert_in_delta 1.6094389956808506, solver.root(2.0), @delta
       end
+
+      should "be flexible with the solver parameters" do
+        solver = Flt::Solver::SecantSolver.new(@context, default_guesses: [0.0, 10.0], tolerance: @tolerance) do |x|
+          y = 2
+          y*exp(x)-10
+        end
+        assert_in_delta 1.6094389956808506, solver.root, @delta
+        assert_in_delta 1.6094389956808506, solver.root(1.0), @delta
+        assert_in_delta 1.6094389956808506, solver.root(2.0), @delta
+
+        solver = Flt::Solver::SecantSolver.new(context: @context, default_guesses: [0.0, 10.0], tolerance: @tolerance) do |x|
+          y = 2
+          y*exp(x)-10
+        end
+        assert_in_delta 1.6094389956808506, solver.root, @delta
+        assert_in_delta 1.6094389956808506, solver.root(1.0), @delta
+        assert_in_delta 1.6094389956808506, solver.root(2.0), @delta
+
+        solver = Flt::Solver::SecantSolver.new(@tolerance, @context, [0.0, 10.0]) do |x|
+          y = 2
+          y*exp(x)-10
+        end
+        assert_in_delta 1.6094389956808506, solver.root, @delta
+        assert_in_delta 1.6094389956808506, solver.root(1.0), @delta
+        assert_in_delta 1.6094389956808506, solver.root(2.0), @delta
+      end
     end
 
     context "using DecNum arithmetic" do

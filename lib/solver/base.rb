@@ -6,13 +6,27 @@ module Flt::Solver
 
 class Base
 
+  # Admitted options:
+  #
+  # * :context : Numerical context (e.g. Flt::Decimal::Context) Float by default
+  # * :default_guesses : default initial guesses
+  # * :tolerance : numerical tolerance
+  # * :equation : equation to be solved; can also be passed as a block
+  #
   # default_guesses: nil for no pre-guess, or one or two guesses (use array for two)
-  def initialize(context, default_guesses, tol, eqn=nil, &blk)
-    @context = context
-    @default_guesses = Array(default_guesses)
+  #
+  # The values of any of the parameters can also be passed as arguments
+  # (not in the options Hash, if present) in any order, e.g.:
+  #
+  #   Solver::Base.new Flt::DecNum.context, tolerance: Flt::Tolerance(3, :decimals)
+  #
+  def initialize(*args, &blk)
+    options = Base.extract_options(*args, &blk)
+    @context = options[:context] || Float.context
+    @default_guesses = Array(options[:default_guesses])
     @x = @default_guesses.first
-    @f = eqn || blk
-    @tol = tol # user-requested tolerance
+    @f = options[:equation]
+    @tol = options[:tolerance] # user-requested tolerance
     @max_it = 8192
     reset
   end
@@ -103,6 +117,30 @@ class Base
 
   def validate
     true
+  end
+
+  def self.extract_options(*args, &blk)
+    options = {}
+    args.each do |arg|
+      case arg
+      when Hash
+        options.merge! arg
+      when Flt::Num::ContextBase, Flt::FloatContext
+        options.merge! context: arg
+      when Array, Numeric
+        options.merge! default_guesses: Array(arg)
+      when Proc
+        options.merge! equation: arg
+      when Flt::Tolerance
+        options.merge! tolerance: arg
+      when Base
+        options.merge! solver_class: arg
+      else
+        raise "Invalid Argument #{arg.inspect}"
+      end
+    end
+    options[:equation] ||= blk
+    options
   end
 
 end # Base
