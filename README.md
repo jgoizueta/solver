@@ -70,8 +70,7 @@ pmt = tvm_solver.root(
   future_value: 0,
   time: 20*12,
   interest: 7,
-  payments_per_year: 12,
-  payment: 0
+  payments_per_year: 12
 )
 puts s.round(2) # => -1162.95
 ```

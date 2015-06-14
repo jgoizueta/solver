@@ -55,7 +55,7 @@ module Flt::Solver
     def equation_value(v)
       values = @parameters.merge(@var=>v)
       #@context.math(*values.values_at(*@vars).map{|v| @context.Num(v)}, &@eqn)
-      @context.math(*@vars.map{|v| @context.Num(values[v])}, &@eqn)
+      @context.math(*@vars.map{|v| values[v] && @context.Num(values[v])}.compact, &@eqn)
       # equivalent to: @context.math(values, &Function[@eqn]) # which doesn't need @vars
     end
 
