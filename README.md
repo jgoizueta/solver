@@ -76,6 +76,14 @@ pmt = tvm_solver.root(
 puts s.round(2) # => -1162.95
 ```
 
+A better (more accurate) financial solver is implemented by the `TVM` class:
+
+```ruby
+tvm = Flt::Solver::TVM.new(Flt.Tolerance(2,:decimals), Flt::DecNum.context)
+solution = tvm.solve(t: 20*12, m0: 150000, m: 0, i: 7, p: 12)
+puts solution[:pmt].round(2) # => -1162.95
+```
+
 # Licensing
 
 Copyright (c) 2010 Javier Goizueta. See LICENSE for details.
