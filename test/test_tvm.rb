@@ -40,6 +40,16 @@ class TestTVM < MiniTest::Unit::TestCase
         assert_in_delta @context.Num('331667.006691'), sol[:m], @delta
       end
 
+      should "work with zero interest" do
+        sol = @tvm.solve(:t=>240, :m0=>10000, :m=>0, :i=>0, :p=>12)
+        assert_equal [:pmt], sol.keys
+        assert_in_delta -10000.0/240, sol[:pmt], @delta
+
+        sol = @tvm.solve(:t=>240, :m0=>10000, :m=>-300, :i=>0, :p=>12)
+        assert_equal [:pmt], sol.keys
+        assert_in_delta -(10000.0-300)/240, sol[:pmt], @delta
+      end
+
     end
 
   end

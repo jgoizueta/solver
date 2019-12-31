@@ -32,7 +32,7 @@ module Flt::Solver
       @var_descriptions
     end
 
-    # Parameters:
+    # Parameters: (using cash-flow sign convention)
     #  :t time in periods
     #  :p number of periods per year
     #  :i percent yearly interest rate
@@ -58,7 +58,11 @@ module Flt::Solver
       n = -t
       k = @context.exp(lnp1(i)*n) # (i+1)**n
       # Equation: -m*k = m0 + pmt*(1-k)/i
-      m0 + pmt*(@one-k)/i + m*k
+      if i == 0 # TODO: with tolerance?
+        m0 + pmt*t + m # k == 1
+      else
+        m0 + pmt*(@one-k)/i + m*k
+      end
     end
 
     # ln(x+1)
